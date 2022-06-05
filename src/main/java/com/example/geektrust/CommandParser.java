@@ -49,8 +49,8 @@ public enum CommandParser {
         String[] input = inputParams.split("\\s");
         commandWrapper.setInputArgs(input);
         ValidatorOutput validate = commandWrapper.validate();
-        if(!validate.result)
-            return validate.message;
+        if(!validate.isResult())
+            return validate.getMessage();
         commandWrapper.map();
         return commandWrapper.execute();
     }

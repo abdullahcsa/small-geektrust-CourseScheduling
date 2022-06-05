@@ -1,5 +1,13 @@
 package com.example.geektrust.dto;
 
 public class EmailAddress {
-    public String email;
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

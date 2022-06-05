@@ -30,7 +30,7 @@ public class RegistrationService {
         registrationData.registerEmployeeDataForCourse(registrationID, course.getCourseId(), employee);
         courseService.addRegistration(course.getCourseId(), registrationID);
 
-        LOGGER.info("Successfully registered course for {} with {}", employee.name, registrationID);
+        LOGGER.info("Successfully registered course for {} with {}", employee.getName(), registrationID);
         return registrationID + " " + Messages.ACCEPTED;
     }
 
@@ -56,6 +56,6 @@ public class RegistrationService {
 
     //REG-COURSE-<EMPLOYEENAME>-<COURSENAME>
     private String generateCourseRegistrationID(Employee employee, Course course) {
-        return "REG-COURSE-" + employee.name + "-" + course.name;
+        return "REG-COURSE-" + employee.getName() + "-" + course.getName();
     }
 }

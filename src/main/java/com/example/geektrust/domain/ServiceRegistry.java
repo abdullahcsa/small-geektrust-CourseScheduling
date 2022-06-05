@@ -18,7 +18,7 @@ public class ServiceRegistry {
     }
 
     public String registerCourse(RegisterCourseMapper mapper){
-        return registrationService.register(mapper.name, mapper.email, mapper.courseId);
+        return registrationService.register(mapper.getName(), mapper.getEmail(), mapper.getCourseId());
     }
 
     public String allotCourse(String courseId) {

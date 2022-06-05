@@ -54,11 +54,11 @@ public class Executors {
         public ValidatorOutput validate() {
             if (input.length != 5) return new ValidatorOutput(Messages.ErrorMessages.MISSING_INPUT.getMsg());
             courseDTO = new CourseDTO();
-            courseDTO.name = input[0];
-            courseDTO.instructor = input[1];
-            courseDTO.date = input[2];
+            courseDTO.setName(input[0]);
+            courseDTO.setInstructor(input[1]);
+            courseDTO.setDate(input[2]);
             try {
-                courseDTO.min = Integer.parseInt(input[3]);
+                courseDTO.setMin(Integer.parseInt(input[3]));
                 courseDTO.max = Integer.parseInt(input[4]);
             } catch (Exception e) {
                 return new ValidatorOutput(Messages.ErrorMessages.INPUT_DATA_ERROR.getMsg());
@@ -70,11 +70,11 @@ public class Executors {
         @Override
         public void map() {
             courseMapper = new CourseMapper();
-            courseMapper.name = courseDTO.name;
-            courseMapper.instructor = courseDTO.instructor;
-            courseMapper.date = courseDTO.date;
-            courseMapper.min = courseDTO.min;
-            courseMapper.max = courseDTO.max;
+            courseMapper.setName(courseDTO.getName());
+            courseMapper.setInstructor(courseDTO.getInstructor());
+            courseMapper.setDate(courseDTO.getDate());
+            courseMapper.setMin(courseDTO.getMin());
+            courseMapper.setMax(courseDTO.max);
         }
 
         @Override
@@ -93,8 +93,8 @@ public class Executors {
             if(input.length != 2 || !validEmail(input[0]))
                 return new ValidatorOutput(Messages.ErrorMessages.INPUT_DATA_ERROR.getMsg());
             registrantEntry = new RegistrantEntry();
-            registrantEntry.emailAddress = input[0];
-            registrantEntry.courseOffering = input[1];
+            registrantEntry.setEmailAddress(input[0]);
+            registrantEntry.setCourseOffering(input[1]);
 
             return new ValidatorOutput(true);
         }
@@ -107,9 +107,9 @@ public class Executors {
         public void map() {
             mapper = new RegisterCourseMapper();
 
-            mapper.email = registrantEntry.emailAddress;
-            mapper.name = mapper.email.split("@")[0];
-            mapper.courseId = registrantEntry.courseOffering;
+            mapper.setEmail(registrantEntry.getEmailAddress());
+            mapper.setName(mapper.getEmail().split("@")[0]);
+            mapper.setCourseId(registrantEntry.getCourseOffering());
         }
 
         @Override

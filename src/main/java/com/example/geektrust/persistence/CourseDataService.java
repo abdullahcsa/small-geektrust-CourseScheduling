@@ -14,7 +14,7 @@ public class CourseDataService implements CourseData {
     @Override
     public boolean persistCourse(String id, Course course) {
         courseOfferings.put(id, course);
-        HashSet<String> registrations = new LinkedHashSet<>(course.max);
+        HashSet<String> registrations = new LinkedHashSet<>(course.getMax());
         courseRegistrations.put(id, registrations);
         return true;
     }
@@ -28,14 +28,14 @@ public class CourseDataService implements CourseData {
     public boolean isRegistrationOpen(String courseId){
         int currentRegistrations = courseRegistrations.get(courseId).size();
         Course course = courseOfferings.get(courseId);
-        return (currentRegistrations < course.max);
+        return (currentRegistrations < course.getMax());
     }
 
     @Override
     public boolean allotCourse(String courseId){
         Course course = courseOfferings.get(courseId);
         int currentRegistrations = courseRegistrations.get(courseId).size();
-        if (currentRegistrations < course.min)
+        if (currentRegistrations < course.getMin())
             return false;
         course.setAllotted();
         courseOfferings.put(courseId, course);

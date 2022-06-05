@@ -2,15 +2,31 @@ package com.example.geektrust.commandLineInputs;
 
 
 public class ValidatorOutput {
-    public boolean result = true;
-    public String message;
+    private boolean result = true;
+    private String message;
 
     public ValidatorOutput(String error) {
-        this.result = false;
-        this.message = error;
+        this.setResult(false);
+        this.setMessage(error);
     }
 
     public ValidatorOutput(boolean result) {
-        this.result = true;
+        this.setResult(true);
+    }
+
+    public boolean isResult() {
+        return result;
+    }
+
+    public void setResult(boolean result) {
+        this.result = result;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

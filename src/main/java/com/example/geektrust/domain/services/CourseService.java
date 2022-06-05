@@ -45,11 +45,11 @@ public class CourseService {
             Employee employeeData = registrationService.getEmployeeData(registrationId);
             sb  // <course-registration-id> <email-id> <course-offering-id> <course-name> <instructor> <date-in-ddmmyyyy> <status>
                     .append(registrationId).append(SPACES)
-                    .append(employeeData.email).append(SPACES)
+                    .append(employeeData.getEmail()).append(SPACES)
                     .append(courseId).append(SPACES)
-                    .append(course.name).append(SPACES)
-                    .append(course.instructor).append(SPACES)
-                    .append(course.date).append(SPACES)
+                    .append(course.getName()).append(SPACES)
+                    .append(course.getInstructor()).append(SPACES)
+                    .append(course.getDate()).append(SPACES)
                     .append(status).append(System.lineSeparator());
 
         }
@@ -59,7 +59,7 @@ public class CourseService {
 
     //OFFERING-<COURSENAME>-<INSTRUCTORNAME>
     private String generateCourseID(Course course) {
-        return "OFFERING-" + course.name + "-" + course.instructor;
+        return "OFFERING-" + course.getName() + "-" + course.getInstructor();
     }
 
     Map<String, Course> courseOfferings = new HashMap<>();
